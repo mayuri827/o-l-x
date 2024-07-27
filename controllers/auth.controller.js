@@ -128,7 +128,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
         maxAge: 1000 * 60 * 60 * 24 * 180
     })
 
-    res.json({ message: "user register Success" })
+    res.json({ message: "user Login Success" })
 })
 exports.logoutUser = asyncHandler(async (req, res) => {
     res.clearCookie("User")

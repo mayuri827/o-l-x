@@ -20,7 +20,7 @@ exports.verifyUserEmail = asyncHandler(async (req, res) => {
             password: result.password,
             avatar: result.avatar,
             emailVerified: result.emailVerified,
-            mobileVerified: result.emailVerified,
+            mobileVerified: result.mobileVerified,
             mobile: result.mobile,
         }
     })
