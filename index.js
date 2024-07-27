@@ -21,7 +21,7 @@ app.use("*", (req, res) => {
 })
 app.use((err, req, res, next) => {
     console.log(err)
-    res.status(500).json({ messgae: `server Error${err.message}` })
+    res.status(500).json({ message: "Resource Not Found" })
 })
 mongoose.connect(process.env.MONGO_URL)
 mongoose.connection.once("open", () => {

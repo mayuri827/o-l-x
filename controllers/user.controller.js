@@ -13,5 +13,5 @@ exports.verifyUserEmail = asyncHandler(async (req, res) => {
         message: `<p>your otp ${otp}</p>`
     })
 
-    res.json({ message: "Verification Send Success" })
+    res.json({ message: "Verification Send Success", isSend })
 })
