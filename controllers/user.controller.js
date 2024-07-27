@@ -10,22 +10,14 @@ exports.verifyUserEmail = asyncHandler(async (req, res) => {
     const otp = Math.floor(10000 + Math.random() * 900000)
     await User.findByIdAndUpdate(req.loggedInUser, { emailcode: otp })
 
-    const isSend = await sendEmail({
+    await sendEmail({
         to: result.email,
         subject: "Verify Email",
         message: `<p>your otp ${otp}</p>`
     })
 
     res.json({
-        message: "Verification Send Success", result: {
-            _id: result._id,
-            name: result.name,
-            password: result.password,
-            avatar: result.avatar,
-            emailVerified: result.emailVerified,
-            mobileVerified: result.mobileVerified,
-            mobile: result.mobile,
-        }
+        message: "Verification Send Success"
     })
 })
 exports.verifyEmailOTP = asyncHandler(async (req, res) => {
@@ -46,9 +38,9 @@ exports.verifyMobileOTP = asyncHandler(async (req, res) => {
     if (!result) {
         return res.status(401).json({ message: "you are not Logged In. Please Login Again" })
     }
-    if (otp !== result.mobilecode) {
+    if (otp != result.mobilecode) {
         return res.status(404).json({ message: "Invalid OTP" })
     }
-    await User.findByIdAndUpdate(req.loggedInUser, { emailVerified: true })
+    await User.findByIdAndUpdate(req.loggedInUser, { mobileVerified: true })
     res.json({ message: "Mobile Verify Success" })
 })
