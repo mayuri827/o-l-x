@@ -5,5 +5,6 @@ router
     .post("/verify-user-email", userProtected, userController.verifyUserEmail)
     .post("/verify-user-email-otp", userProtected, userController.verifyEmailOTP)
     .post("/verify-user-mobile-otp", userProtected, userController.verifyMobileOTP)
+    .post("/verify-user-mobile", userProtected, userController.VerifyUserMobile)
 
 module.exports = router
