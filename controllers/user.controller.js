@@ -75,7 +75,7 @@ exports.getLocation = asyncHandler(async (req, res) => {
     const { gps } = req.body
     const { isError, error } = checkEmpty({ gps })
     if (isError) {
-        return res.status(400).json({ message: "All fields required" })
+        return res.status(400).json({ message: "All fields required", error })
     }
 
     //api call to opencagedata
