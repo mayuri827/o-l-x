@@ -83,7 +83,7 @@ exports.getLocation = asyncHandler(async (req, res) => {
     const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?key=${process.env.OPEN_CAGE_API_KEY}f&q=${gps.latitude}%2C${gps.longitude}&pretty=1&no_annotations=1`)
 
     const x = await response.json()
-    res.json({ message: "Location Fetch Suceess", result: x.result[0].formatted })
+    res.json({ message: "Location Fetch Suceess", result: x.results[0].formatted })
 
 
 
