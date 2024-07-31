@@ -17,11 +17,13 @@ app.use(cors({
 app.use("/api/auth", require("./routes/auth.routes"))
 app.use("/api/user", require("./routes/user.routes"))
 app.use("*", (req, res) => {
+    console.log(req.method);
+    console.log(req.baseUrl);
     res.status(404).json({ message: "Resource Not Found" })
 })
 app.use((err, req, res, next) => {
     console.log(err)
-    res.status(500).json({ message: "Resource Not Found" })
+    res.status(404).json({ message: "Resource Not Found" })
 })
 mongoose.connect(process.env.MONGO_URL)
 mongoose.connection.once("open", () => {
