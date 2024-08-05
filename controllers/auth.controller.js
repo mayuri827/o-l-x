@@ -118,7 +118,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
     }
     const verify = await bcrypt.compare(password, result.password)
     if (!verify) {
-        return res.status(401).json({ message: "email not found" })
+        return res.status(401).json({ message: "password do not match" })
     }
 
     const token = jwt.sign({ userId: result._id }, process.env.JWT_KEY, { expiresIn: "180d" })
